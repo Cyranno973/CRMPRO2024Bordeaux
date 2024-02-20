@@ -9,6 +9,7 @@ import {PageListClientsComponent} from "./clients/pages/page-list-clients/page-l
 import {PageAddClientsComponent} from "./clients/pages/page-add-clients/page-add-clients.component";
 import {PageEditClientsComponent} from "./clients/pages/page-edit-clients/page-edit-clients.component";
 import {HttpClientModule} from "@angular/common/http";
+import { ErrorComponent } from './errors/error/error.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {HttpClientModule} from "@angular/common/http";
     SidebarComponent,
     PageListClientsComponent,
     PageAddClientsComponent,
-    PageEditClientsComponent
+    PageEditClientsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

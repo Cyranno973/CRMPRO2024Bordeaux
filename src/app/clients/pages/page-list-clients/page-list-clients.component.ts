@@ -17,9 +17,13 @@ export class PageListClientsComponent implements OnInit {
   ngOnInit() {
     // console.log('page html initialisé');
     this.clientsService.getAllCLients().subscribe({
+
       next: (clients: Client[]) => {
         console.log(clients);
-        this.clientsList = clients
+        setTimeout(() => {
+          this.clientsList = clients
+        }, 3000)
+
       }
     })
   }
