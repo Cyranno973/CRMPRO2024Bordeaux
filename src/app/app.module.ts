@@ -10,6 +10,7 @@ import {PageAddClientsComponent} from "./clients/pages/page-add-clients/page-add
 import {PageEditClientsComponent} from "./clients/pages/page-edit-clients/page-edit-clients.component";
 import {HttpClientModule} from "@angular/common/http";
 import { ErrorComponent } from './errors/error/error.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ErrorComponent } from './errors/error/error.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

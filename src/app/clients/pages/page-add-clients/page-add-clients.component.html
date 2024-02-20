@@ -1,1 +1,19 @@
-<p>page-add-clients works!</p>
+<form [formGroup]="formClient">
+  <div class="mb-3">
+    <label for="name" class="form-label">name</label>
+    <input formControlName="name" type="text" class="form-control" id="name" placeholder="name" >
+  </div>
+  <div class="mb-3">
+    <label for="firstName" class="form-label">firstName</label>
+    <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="firstName">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">email</label>
+    <input formControlName="email" type="email" class="form-control" id="email" placeholder="email">
+  </div>
+  <div class="mb-3">
+    <label for="phone" class="form-label">phone</label>
+    <input formControlName="phone" type="number" class="form-control" id="phone" placeholder="phone">
+  </div>
+  <button type="button" class="btn btn-primary">Envoyer</button>
+</form>
