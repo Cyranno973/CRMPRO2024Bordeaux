@@ -10,7 +10,7 @@ import {Client} from "../../../core/models/clients";
 })
 export class PageListClientsComponent implements OnInit {
   tabPrenoms: string[]= [];
-  headers: string[] =  ['companyName', 'firstName', 'lastName', 'email', 'phone', 'address', 'zipCode', 'city', 'country', 'state'];
+  headers: string[] =  ['companyName', 'firstName', 'lastName', 'email', 'phone', 'address', 'zipCode', 'city', 'country', 'state', 'actions'];
   clientsList: Client[] = [];
   constructor(private clientsService: ClientsService) {
   }
