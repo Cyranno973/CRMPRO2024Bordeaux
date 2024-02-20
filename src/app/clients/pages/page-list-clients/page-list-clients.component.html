@@ -1,2 +1,23 @@
-<p>page-list-clients works!</p>
-<li *ngFor="let prenom of tabPrenoms"> {{prenom}}</li>
+<h1 class="text-center">Liste des Clients</h1>
+<table class="table  table-striped" style="max-width:1200px; margin: 40px auto">
+  <thead>
+  <tr>
+    <th *ngFor="let header of headers">{{header}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clientsList">
+    <td>{{client.firstName}}</td>
+    <td>{{client.email}}</td>
+    <td>{{client.city}}</td>
+    <td>{{client.lastName}}</td>
+    <td>{{client.country}}</td>
+    <td>{{client.phone}}</td>
+    <td>{{client.state}}</td>
+    <td>{{client.address}}</td>
+    <td>{{client.companyName}}</td>
+    <td>{{client.zipCode}}</td>
+  </tr>
+
+  </tbody>
+</table>
