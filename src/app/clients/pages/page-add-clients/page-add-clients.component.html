@@ -1,11 +1,25 @@
+<p>Pristine {{formClient.pristine}}</p>
+<p>Touched {{formClient.touched}}</p>
+<p>UnTouched {{formClient.untouched}}</p>
+<p>Status {{formClient.status}}</p>
+<p>Valid {{formClient.valid}}</p>
+
 <form [formGroup]="formClient">
   <div class="mb-3">
     <label for="name" class="form-label">name</label>
-    <input formControlName="name" type="text" class="form-control" id="name" placeholder="name" >
+    <input formControlName="name" type="text" class="form-control" id="name" placeholder="name">
+
   </div>
   <div class="mb-3">
     <label for="firstName" class="form-label">firstName</label>
     <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="firstName">
+
+    <span *ngIf="formClient.controls['firstName'].errors?.['required'] &&
+      formClient.controls['firstName'].touched" class="text-danger">Veuillez entrer un prenom
+    </span>
+
+    <span *ngIf="formClient.controls['firstName'].errors?.['minlength'] &&
+     formClient.controls['firstName'].touched" class="text-danger">Veuillez entrer un prenom au moins de 2 caracteres</span>
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">email</label>
@@ -15,5 +29,6 @@
     <label for="phone" class="form-label">phone</label>
     <input formControlName="phone" type="number" class="form-control" id="phone" placeholder="phone">
   </div>
-  <button type="button" class="btn btn-primary">Envoyer</button>
+<!--  <button  (click)="save()" type="button" class="btn btn-primary">Envoyer</button>-->
+  <button [disabled]="!formClient.valid" (click)="save()" type="button" class="btn btn-primary">Envoyer</button>
 </form>
