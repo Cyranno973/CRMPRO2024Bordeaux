@@ -20,13 +20,13 @@ export class PageListClientsComponent implements OnInit {
 
       next: (clients: Client[]) => {
         console.log(clients);
-        setTimeout(() => {
           this.clientsList = clients
-        }, 3000)
-
       }
     })
   }
 
 
+  delete(id: number) {
+    this.clientsService.deleteClient(id).subscribe(v => console.log(v))
+  }
 }

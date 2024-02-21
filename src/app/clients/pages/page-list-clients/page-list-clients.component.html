@@ -19,7 +19,7 @@
     <td>{{client.state}}</td>
     <td>
       <button class="btn btn-info me-2">editer</button>
-      <button class="btn btn-danger">supprimer</button>
+      <button (click)="delete(client.id)" class="btn btn-danger">supprimer</button>
     </td>
   </tr>
   </tbody>

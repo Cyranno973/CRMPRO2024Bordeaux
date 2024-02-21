@@ -13,12 +13,12 @@ export class PageAddClientsComponent implements OnInit {
   formClient!: FormGroup;
   allStatus: StateClient[] = Object.values(StateClient);
   selected:string = "OPTION";
-
+  longeurClients! : number;
   constructor(private fb: FormBuilder, private clientsService: ClientsService) {
   }
   ngOnInit() {
     this.formClient = this.fb.group({
-      name:['',[Validators.required, Validators.maxLength(15)]],
+      lastName:['',[Validators.required, Validators.maxLength(15)]],
       firstName:['', [Validators.required, Validators.minLength(2)]],
       phone:[''],
       email:['', ],
@@ -27,8 +27,13 @@ export class PageAddClientsComponent implements OnInit {
   }
 
   save() {
-    console.log(this.formClient);
-    console.log(this.formClient.value);
-    this.clientsService.addClient(this.formClient.value);
+    // console.log(this.formClient);
+    // console.log(this.formClient.value);
+    this.clientsService.getAllCLients().subscribe(clients => {
+      this.longeurClients = clients.length;
+    const newClient = {...this.formClient.value, id:this.longeurClients+1}
+    console.log(newClient);
+    this.clientsService.addClient(newClient).subscribe(v => console.log(v));
+    })
   }
 }

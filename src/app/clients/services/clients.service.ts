@@ -16,6 +16,9 @@ export class ClientsService {
   addClient(client: Client): Observable<Client> {
     return this.http.post<Client>(`${this.apiUrl}`,client);
   }
+  deleteClient(id: number): Observable<Client> {
+    return this.http.delete<Client>(`${this.apiUrl}/${id}`);
+  }
 
   getAllprenoms(): Observable<string[]>{
     return of(['veronica', 'gabriel', 'sixtine']);
