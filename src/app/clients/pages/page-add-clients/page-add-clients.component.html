@@ -29,6 +29,13 @@
     <label for="phone" class="form-label">phone</label>
     <input formControlName="phone" type="number" class="form-control" id="phone" placeholder="phone">
   </div>
-<!--  <button  (click)="save()" type="button" class="btn btn-primary">Envoyer</button>-->
+  <div class="mb-3">
+   <select name="status" id="status" formControlName="status">
+     <option  selected value="">OPTION</option>
+    <option *ngFor="let status of allStatus">{{status}}</option>
+   </select>
+
+  </div>
+  <button  (click)="save()" type="button" class="btn btn-primary">visualiser formclient </button>
   <button [disabled]="!formClient.valid" (click)="save()" type="button" class="btn btn-primary">Envoyer</button>
 </form>
