@@ -11,17 +11,18 @@ import {NotOptionValidator} from "../../validators/not-option.validator";
 export class PageAddClientsComponent implements OnInit {
   formClient!: FormGroup;
   allStatus: StateClient[] = Object.values(StateClient);
+  selected:string = "OPTION";
 
   constructor(private fb: FormBuilder) {
   }
   ngOnInit() {
-    console.log(this.allStatus);
+    // console.log(this.selected);
     this.formClient = this.fb.group({
-      name:['',[Validators.required, Validators.maxLength(5)]],
+      name:['',[Validators.required, Validators.maxLength(15)]],
       firstName:['', [Validators.required, Validators.minLength(2)]],
       phone:[''],
       email:['', ],
-      status: ['', [NotOptionValidator()]]
+      status: [this.selected, [NotOptionValidator()]]
     })
   }
 
