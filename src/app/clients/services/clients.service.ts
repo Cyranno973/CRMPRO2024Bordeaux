@@ -20,6 +20,10 @@ export class ClientsService {
     return this.http.delete<Client>(`${this.apiUrl}/${id}`);
   }
 
+  getClientById(id: number): Observable<Client> {
+    return this.http.get<Client>(`${this.apiUrl}/${id}`);
+  }
+
   getAllprenoms(): Observable<string[]>{
     return of(['veronica', 'gabriel', 'sixtine']);
   }

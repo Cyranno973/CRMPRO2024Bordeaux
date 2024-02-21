@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:'', redirectTo:'/clients', pathMatch:"full" },
   {path:'clients', component: PageListClientsComponent},
   {path:'add', component: PageAddClientsComponent},
-  {path:'edit', component: PageEditClientsComponent},
+  {path:'edit/:id', component: PageEditClientsComponent},
   {path:'**', component: ErrorComponent},
 ];
 

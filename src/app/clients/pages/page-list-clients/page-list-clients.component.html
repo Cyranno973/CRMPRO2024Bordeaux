@@ -18,7 +18,7 @@
     <td>{{client.country}}</td>
     <td>{{client.state}}</td>
     <td>
-      <button class="btn btn-info me-2">editer</button>
+      <button routerLink="/edit/{{client.id}}" class="btn btn-info me-2">editer</button>
       <button (click)="delete(client.id)" class="btn btn-danger">supprimer</button>
     </td>
   </tr>

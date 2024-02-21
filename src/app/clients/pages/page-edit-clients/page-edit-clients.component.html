@@ -1,1 +1,34 @@
-<p>page-edit-clients works!</p>
+<form *ngIf="formClient" [formGroup]="formClient">
+  <div class="mb-3">
+    <label for="lastName" class="form-label">lastName</label>
+    <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="lastName">
+
+  </div>
+  <div class="mb-3">
+    <label for="firstName" class="form-label">firstName</label>
+    <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="firstName">
+
+    <span *ngIf="formClient.controls['firstName'].errors?.['required'] &&
+      formClient.controls['firstName'].touched" class="text-danger">Veuillez entrer un prenom
+    </span>
+
+    <span *ngIf="formClient.controls['firstName'].errors?.['minlength'] &&
+     formClient.controls['firstName'].touched" class="text-danger">Veuillez entrer un prenom au moins de 2 caracteres</span>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">email</label>
+    <input formControlName="email" type="email" class="form-control" id="email" placeholder="email">
+  </div>
+  <div class="mb-3">
+    <label for="phone" class="form-label">phone</label>
+    <input formControlName="phone" type="number" class="form-control" id="phone" placeholder="phone">
+  </div>
+  <div class="mb-3">
+    <select name="status" id="status" formControlName="status">
+      <option [value]="selected">{{selected}}</option>
+      <option *ngFor="let status of allStatus">{{status}}</option>
+    </select>
+  </div>
+  <button  (click)="save()" type="button" class="btn btn-primary">visualiser formclient </button>
+  <button [disabled]="!formClient.valid" (click)="save()" type="button" class="btn btn-primary">Envoyer</button>
+</form>

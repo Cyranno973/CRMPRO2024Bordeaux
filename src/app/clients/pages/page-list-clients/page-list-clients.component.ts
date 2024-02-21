@@ -17,14 +17,12 @@ export class PageListClientsComponent implements OnInit {
   ngOnInit() {
     // console.log('page html initialisé');
     this.clientsService.getAllCLients().subscribe({
-
       next: (clients: Client[]) => {
         console.log(clients);
           this.clientsList = clients
       }
     })
   }
-
 
   delete(id: number) {
     this.clientsService.deleteClient(id).subscribe(v => console.log(v))
