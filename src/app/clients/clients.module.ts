@@ -5,6 +5,7 @@ import {PageAddClientsComponent} from "./pages/page-add-clients/page-add-clients
 import {PageEditClientsComponent} from "./pages/page-edit-clients/page-edit-clients.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
+import {ClientsRoutingModule} from "./clients-routing.module";
 
 
 
@@ -17,7 +18,8 @@ import {RouterLink} from "@angular/router";
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    ClientsRoutingModule
   ],
   exports: [
     PageListClientsComponent,
