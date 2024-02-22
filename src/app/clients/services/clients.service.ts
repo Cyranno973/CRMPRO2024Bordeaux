@@ -23,6 +23,9 @@ export class ClientsService {
   getClientById(id: number): Observable<Client> {
     return this.http.get<Client>(`${this.apiUrl}/${id}`);
   }
+  updateClient(client: Client): Observable<Client> {
+    return this.http.put<Client>(`${this.apiUrl}/${client.id}`,client);
+  }
 
   getAllprenoms(): Observable<string[]>{
     return of(['veronica', 'gabriel', 'sixtine']);

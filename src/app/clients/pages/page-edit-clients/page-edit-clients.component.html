@@ -24,9 +24,9 @@
     <input formControlName="phone" type="number" class="form-control" id="phone" placeholder="phone">
   </div>
   <div class="mb-3">
-    <select name="status" id="status" formControlName="status">
+    <select name="state" id="state" formControlName="state">
       <option [value]="selected">{{selected}}</option>
-      <option *ngFor="let status of allStatus">{{status}}</option>
+      <option *ngFor="let status of allStatus" [value]="status">{{status}}</option>
     </select>
   </div>
   <button  (click)="save()" type="button" class="btn btn-primary">visualiser formclient </button>

@@ -4,6 +4,7 @@ import {ClientsService} from "../../services/clients.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NotOptionValidator} from "../../validators/not-option.validator";
 import {StateClient} from "../../../core/enums/state-client";
+import {Client} from "../../../core/models/clients";
 
 @Component({
   selector: 'app-page-edit-clients',
@@ -19,20 +20,23 @@ export class PageEditClientsComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.activatedRoute.snapshot.paramMap);
     this.id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.clientService.getClientById(this.id).subscribe(client => {
       console.log(client);
+      // if(client.state) this.selected = client.state;
       this.formClient = this.fb.group({
         lastName:[client.lastName || '' ,[Validators.required, Validators.maxLength(15)]],
         firstName:[client.firstName || '', [Validators.required, Validators.minLength(2)]],
         phone:[client.phone || ''],
         email:[client.email || '', ],
-        status: [client.state || '', [NotOptionValidator()]]
+        state: [client.state || '', [NotOptionValidator()]]
       })
     })
 
   }
   save(){
-
+    const newClient: Client = {... this.formClient.value, id: this.id};
+    this.clientService.updateClient(newClient).subscribe(v => console.log(v))
   }
 }

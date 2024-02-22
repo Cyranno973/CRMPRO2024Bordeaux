@@ -1,35 +1,30 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
-import { SidebarComponent } from './core/sidebar/sidebar.component';
-import {PageListClientsComponent} from "./clients/pages/page-list-clients/page-list-clients.component";
-import {PageAddClientsComponent} from "./clients/pages/page-add-clients/page-add-clients.component";
-import {PageEditClientsComponent} from "./clients/pages/page-edit-clients/page-edit-clients.component";
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import { ErrorComponent } from './errors/error/error.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {CoreModule} from "./core/core.module";
+import {ErrorsModule} from "./errors/errors.module";
+import {OrdersModule} from "./orders/orders.module";
+import {ClientsModule} from "./clients/clients.module";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidebarComponent,
-    PageListClientsComponent,
-    PageAddClientsComponent,
-    PageEditClientsComponent,
-    ErrorComponent
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    BrowserModule,
+
+    AppRoutingModule,
+
+    CoreModule,
+    ErrorsModule,
+    ClientsModule,
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

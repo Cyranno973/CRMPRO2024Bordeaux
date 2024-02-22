@@ -5,6 +5,7 @@ import {PageAddClientsComponent} from "./clients/pages/page-add-clients/page-add
 import {PageEditClientsComponent} from "./clients/pages/page-edit-clients/page-edit-clients.component";
 import {ErrorComponent} from "./errors/error/error.component";
 
+
 const routes: Routes = [
   {path:'', redirectTo:'/clients', pathMatch:"full" },
   {path:'clients', component: PageListClientsComponent},

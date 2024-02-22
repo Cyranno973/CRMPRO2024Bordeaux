@@ -1,10 +1,4 @@
-<p>Pristine {{formClient.pristine}}</p>
-<p>Touched {{formClient.touched}}</p>
-<p>UnTouched {{formClient.untouched}}</p>
-<p>Status {{formClient.status}}</p>
-<p>Valid {{formClient.valid}}</p>
-
-<form [formGroup]="formClient">
+<form *ngIf="formClient" [formGroup]="formClient">
   <div class="mb-3">
     <label for="lastName" class="form-label">lastName</label>
     <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="lastName">
@@ -30,7 +24,7 @@
     <input formControlName="phone" type="number" class="form-control" id="phone" placeholder="phone">
   </div>
   <div class="mb-3">
-   <select name="status" id="status" formControlName="status">
+   <select name="state" id="state" formControlName="state">
      <option [value]="selected">{{selected}}</option>
     <option *ngFor="let status of allStatus">{{status}}</option>
    </select>

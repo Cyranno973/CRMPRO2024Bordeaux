@@ -1,18 +1,15 @@
 {
   "clients": [
     {
-      "companyName": "Compagnie Alpha",
+      "lastName": "Duponta",
       "firstName": "Jean",
-      "lastName": "Dupont",
-      "email": "jean.dupont@alpha.com",
       "phone": "0123456789",
-      "address": "123 rue de Alpha",
-      "zipCode": "75001",
-      "city": "Paris",
-      "country": "France",
-      "state": true
+      "email": "jean.dupont@alpha.com",
+      "state": "ACTIVE",
+      "id": 1
     },
     {
+      "id": 2,
       "companyName": "Beta Entreprises",
       "firstName": "Marie",
       "lastName": "Durand",
@@ -22,9 +19,10 @@
       "zipCode": "75002",
       "city": "Lyon",
       "country": "France",
-      "state": false
+      "state": "INACTIVE"
     },
     {
+      "id": 3,
       "companyName": "Gamma Solutions",
       "firstName": "Luc",
       "lastName": "Martin",
@@ -34,9 +32,10 @@
       "zipCode": "75003",
       "city": "Marseille",
       "country": "France",
-      "state": true
+      "state": "ACTIVE"
     },
     {
+      "id": 4,
       "companyName": "Delta Services",
       "firstName": "Sophie",
       "lastName": "Bernard",
@@ -46,9 +45,10 @@
       "zipCode": "75004",
       "city": "Toulouse",
       "country": "France",
-      "state": false
+      "state": "INACTIVE"
     },
     {
+      "id": 5,
       "companyName": "Epsilon LLC",
       "firstName": "Alex",
       "lastName": "Leroy",
@@ -58,7 +58,7 @@
       "zipCode": "75005",
       "city": "Nice",
       "country": "France",
-      "state": true
+      "state": "ACTIVE"
     }
   ]
 }
