@@ -1,7 +1,7 @@
 {
   "clients": [
     {
-      "lastName": "Duponta",
+      "lastName": "Dupont",
       "firstName": "Jean",
       "phone": "0123456789",
       "email": "jean.dupont@alpha.com",
@@ -59,6 +59,14 @@
       "city": "Nice",
       "country": "France",
       "state": "ACTIVE"
+    },
+    {
+      "lastName": "aeaeae",
+      "firstName": "eaeae",
+      "phone": "",
+      "email": "",
+      "state": "ACTIVE",
+      "id": 6
     }
   ]
 }

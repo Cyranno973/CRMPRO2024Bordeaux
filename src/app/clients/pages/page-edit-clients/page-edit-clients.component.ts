@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ClientsService} from "../../services/clients.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NotOptionValidator} from "../../validators/not-option.validator";
 import {StateClient} from "../../../core/enums/state-client";
 import {Client} from "../../../core/models/clients";
+import {ClientsStoreService} from "../../services/clients-store.service";
 
 @Component({
   selector: 'app-page-edit-clients',
@@ -16,7 +17,8 @@ export class PageEditClientsComponent implements OnInit {
   formClient!: FormGroup;
   selected:string = "OPTION";
   allStatus: StateClient[] = Object.values(StateClient);
-  constructor(private activatedRoute: ActivatedRoute, private clientService: ClientsService, private fb: FormBuilder) {
+  constructor(private activatedRoute: ActivatedRoute, private clientService: ClientsService, private fb: FormBuilder,
+              private clientsStoreService: ClientsStoreService, private router: Router) {
   }
 
   ngOnInit() {
@@ -37,6 +39,10 @@ export class PageEditClientsComponent implements OnInit {
   }
   save(){
     const newClient: Client = {... this.formClient.value, id: this.id};
-    this.clientService.updateClient(newClient).subscribe(v => console.log(v))
+    this.clientService.updateClient(newClient).subscribe(v => {
+      console.log(v)
+      this.clientsStoreService.updateClient(newClient);
+      this.router.navigate(['/clients']);
+    })
   }
 }

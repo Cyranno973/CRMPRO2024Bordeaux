@@ -1,62 +1,45 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ClientsService} from "../../services/clients.service";
-import {Observable, Subject} from "rxjs";
+import {Observable, Subject, BehaviorSubject, Subscription} from "rxjs";
 import {Client} from "../../../core/models/clients";
+import {ClientsStoreService} from "../../services/clients-store.service";
 
 @Component({
   selector: 'app-page-list-clients',
   templateUrl: './page-list-clients.component.html',
   styleUrl: './page-list-clients.component.css'
 })
-export class PageListClientsComponent implements OnInit {
-  tabPrenoms: string[]= [];
-  headers: string[] =  ['companyName', 'firstName', 'lastName', 'email', 'phone', 'address', 'zipCode', 'city', 'country', 'state', 'actions'];
+export class PageListClientsComponent implements OnInit, OnDestroy {
+  tabPrenoms: string[] = [];
+  headers: string[] = ['companyName', 'firstName', 'lastName', 'email', 'phone', 'address', 'zipCode', 'city', 'country', 'state', 'actions'];
   clientsList: Client[] = [];
+  private clientSubscription!: Subscription;
 
-  number: Subject<number> = new Subject<number>();
-  constructor(private clientsService: ClientsService) {
+  constructor(private clientsService: ClientsService, private clientsStoreService: ClientsStoreService) {
   }
+
   ngOnInit() {
-    // console.log('page html initialisé');
-    this.clientsService.getAllCLients().subscribe({
+
+    this.clientSubscription = this.clientsService.getAllCLients().subscribe({
       next: (clients: Client[]) => {
-        console.log(clients);
-          this.clientsList = clients
+        this.clientsStoreService.clients = clients;
       }
     })
-
-  //   const monObservable = new Observable(subcriber => {
-  //     subcriber.next('Bonjour Dame');
-  //     subcriber.next('Bonjour Virginie');
-  //     subcriber.next('Bonjour Sukjin');
-  //     subcriber.complete();
-  //     subcriber.next('Bonjour Lucia');
-  //     //   subcriber.error();
-  //     // subcriber.complete();
-  //   })
-  //   const monObservable1 = new Observable();
-  //
-  //   monObservable.subscribe({
-  //     next: value => {
-  //       console.log("A ",value);
-  //     }
-  //   })
-  //
-  //   monObservable1.subscribe({
-  //     next: value => {
-  //       console.log("B ", value);
-  //     }
-  //   })
+    this.clientsStoreService.clients$.subscribe(clients =>  this.clientsList = clients);
   }
-
+  ngOnDestroy() {
+    console.log('je detruit le composant listclient')
+    if (this.clientSubscription) {
+      this.clientSubscription.unsubscribe();
+    }
+  }
   delete(id: number) {
     this.clientsService.deleteClient(id).subscribe(v => {
-      this.clientsService.getAllCLients().subscribe(clients => this.clientsList = clients)
-
+      this.clientsStoreService.deleteCLientById(id);
     })
   }
 
-  test(){
 
-  }
+
+
 }

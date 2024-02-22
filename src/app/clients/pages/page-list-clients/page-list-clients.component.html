@@ -18,7 +18,7 @@
     <td>{{client.country}}</td>
     <td>{{client.state}}</td>
     <td>
-      <button routerLink="/edit/{{client.id}}" class="btn btn-info me-2">editer</button>
+      <button routerLink="/clients/edit/{{client.id}}" class="btn btn-info me-2">editer</button>
       <button (click)="delete(client.id)" class="btn btn-danger">supprimer</button>
     </td>
   </tr>
@@ -27,5 +27,3 @@
 <div *ngIf="!clientsList.length" class="text-center">
   Chargement des données....
 </div>
-
-<button (click)="test()">test</button>
